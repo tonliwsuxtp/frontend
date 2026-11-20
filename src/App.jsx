@@ -3,12 +3,14 @@ import Overall from './components/overall'
 import Sales from './components/sales'
 import Transactions from './components/transactions'
 import Ingredients from './components/ingredients'
+import Stock from './components/stock'
 
 const PAGES = {
   overall: Overall,
   sales: Sales,
   transactions: Transactions,
   ingredients: Ingredients,
+  stock: Stock,
 }
 
 // Current page lives in the URL hash (#sales) so refresh / back button keep it.
