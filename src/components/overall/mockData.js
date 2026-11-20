@@ -146,8 +146,3 @@ export function getSummary(period, date) {
   summaryCache.set(cacheKey, s)
   return s
 }
-
-/** Estimated additional tax for the year (mock). */
-export function getTaxEstimate() {
-  return 329
-}

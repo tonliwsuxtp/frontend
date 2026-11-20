@@ -2,7 +2,8 @@ import { useMemo, useState } from 'react'
 import DesktopOverall from './desktop/DesktopOverall'
 import MobileOverall from './mobile/MobileOverall'
 import useMediaQuery from './useMediaQuery'
-import { DATA_END, getSummary, getTaxEstimate, periodRange } from './mockData'
+import { DATA_END, getSummary, periodRange } from './mockData'
+import { estimateTaxDue } from '../tax/taxCalc'
 import { shiftDate } from './dateUtils'
 
 export const DESKTOP_QUERY = '(min-width: 900px)'
@@ -30,7 +31,7 @@ export default function Overall({ initialDate = DATA_END, onAdd, onNavigate, onQ
     }),
     canNext,
     summary,
-    tax: getTaxEstimate(date),
+    tax: estimateTaxDue(date.getFullYear()),
     onAdd,
     onNavigate,
     onQuickAction,
