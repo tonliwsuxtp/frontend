@@ -4,6 +4,7 @@ import Sales from './components/sales'
 import Transactions from './components/transactions'
 import Ingredients from './components/ingredients'
 import Stock from './components/stock'
+import MenuCost from './components/menu-cost'
 
 const PAGES = {
   overall: Overall,
@@ -11,7 +12,11 @@ const PAGES = {
   transactions: Transactions,
   ingredients: Ingredients,
   stock: Stock,
+  'menu-cost': MenuCost,
 }
+
+// Phone bottom-nav ids that point at a differently named page.
+const ALIASES = { cost: 'menu-cost' }
 
 // Current page lives in the URL hash (#sales) so refresh / back button keep it.
 const pageFromHash = () => {
@@ -29,7 +34,8 @@ function App() {
   }, [])
 
   // Pages that aren't built yet are ignored for now.
-  const navigate = (id) => {
+  const navigate = (target) => {
+    const id = ALIASES[target] ?? target
     if (!PAGES[id]) return
     window.location.hash = id
     window.scrollTo(0, 0)

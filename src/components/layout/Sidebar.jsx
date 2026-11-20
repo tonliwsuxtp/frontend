@@ -16,7 +16,7 @@ const NAV = [
   { id: 'tax', label: 'ภาษี', Icon: DocOutline },
 ]
 
-export default function Sidebar({ active = 'overall', onNavigate }) {
+export default function Sidebar({ active = 'overall', onNavigate, extra }) {
   return (
     <aside className="app-sidebar">
       <div className="app-brand">
@@ -42,17 +42,19 @@ export default function Sidebar({ active = 'overall', onNavigate }) {
         ))}
       </nav>
 
-      <div className="app-side-section">
-        <p className="app-side-heading">ช่องทาง</p>
-        <ul className="app-side-channels">
-          {CHANNELS.map((c) => (
-            <li key={c.id}>
-              <i className="app-dot" style={{ background: c.color }} />
-              {c.name}
-            </li>
-          ))}
-        </ul>
-      </div>
+      {extra ?? (
+        <div className="app-side-section">
+          <p className="app-side-heading">ช่องทาง</p>
+          <ul className="app-side-channels">
+            {CHANNELS.map((c) => (
+              <li key={c.id}>
+                <i className="app-dot" style={{ background: c.color }} />
+                {c.name}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
 
       <button type="button" className="app-nav-item app-settings" onClick={() => onNavigate?.('settings')}>
         <SettingsOutline />
