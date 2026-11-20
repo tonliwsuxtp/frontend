@@ -24,7 +24,7 @@ export default function Sales({ onNavigate }) {
   const [appId, setAppId] = useState('grab')
   const [orders, setOrders] = useState(4)
   // Pre-filled sample order so the page shows how the summary works.
-  const [quantities, setQuantities] = useState({ ...emptyQuantities(), kaprao: 6 })
+  const [quantities, setQuantities] = useState({ ...emptyQuantities(), mixed: 6 })
   const [stock, setStock] = useState(INITIAL_STOCK)
   const [sales, setSales] = useState(INITIAL_SALES)
   const [savedMessage, setSavedMessage] = useState('')
@@ -63,7 +63,7 @@ export default function Sales({ onNavigate }) {
     })
     setQuantities(emptyQuantities())
     setOrders(1)
-    setSavedMessage(`บันทึกแล้ว · ${app.name} ${calc.plates} จาน`)
+    setSavedMessage(`บันทึกแล้ว · ${app.name} ${calc.plates} ชุด`)
   }
 
   return (

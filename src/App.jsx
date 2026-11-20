@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react'
 import Overall from './components/overall'
 import Sales from './components/sales'
+import Transactions from './components/transactions'
 
 const PAGES = {
   overall: Overall,
   sales: Sales,
+  transactions: Transactions,
 }
 
 // Current page lives in the URL hash (#sales) so refresh / back button keep it.

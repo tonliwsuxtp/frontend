@@ -8,44 +8,45 @@ export const APPS = [
 ]
 
 /**
- * Ingredients in stock. `low` = warning threshold.
- * Values are the stock *before* today's sample entry, so the first order empties หมูสับ like the design.
+ * Ingredients in stock (fried mala skewer shop). `low` = warning threshold.
+ * Values are the stock *before* the pre-filled sample order, so it shows every status colour.
  */
 export const INITIAL_STOCK = {
-  pork: { name: 'หมูสับ', unit: 'ก.', qty: 720, low: 300 },
-  rice: { name: 'ข้าวสาร', unit: 'ก.', qty: 6200, low: 1000 },
-  basil: { name: 'ใบกะเพรา', unit: 'ก.', qty: 120, low: 50 },
-  chili: { name: 'พริก + กระเทียม', unit: 'ก.', qty: 300, low: 80 },
-  egg: { name: 'ไข่ไก่', unit: 'ฟอง', qty: 30, low: 10 },
-  tofu: { name: 'เต้าหู้ไข่', unit: 'หลอด', qty: 10, low: 3 },
-  box: { name: 'กล่อง + ช้อน', unit: 'ชุด', qty: 40, low: 50 },
+  pork: { name: 'หมูสามชั้น', unit: 'ก.', qty: 360, low: 300 },
+  meatball: { name: 'ลูกชิ้นรวม', unit: 'ลูก', qty: 200, low: 50 },
+  sausage: { name: 'ไส้กรอก', unit: 'ชิ้น', qty: 60, low: 20 },
+  enoki: { name: 'เห็ดเข็มทอง', unit: 'ก.', qty: 400, low: 250 },
+  fishTofu: { name: 'เต้าหู้ปลา', unit: 'ชิ้น', qty: 40, low: 15 },
+  mala: { name: 'ผงหม่าล่า', unit: 'ก.', qty: 500, low: 100 },
+  oil: { name: 'น้ำมันทอด', unit: 'มล.', qty: 3000, low: 1000 },
+  box: { name: 'กล่อง + ไม้เสียบ', unit: 'ชุด', qty: 40, low: 50 },
 }
 
-/** Menus with price, cost per plate (ingredients + packaging) and recipe per plate. */
+/** Menus (sets of skewers) with price, cost per set (ingredients + packaging) and recipe per set. */
 export const MENUS = [
   {
-    id: 'kaprao', name: 'ข้าวกะเพราหมูสับ', short: 'กะเพราหมูสับ', price: 60, cost: 31.63,
-    recipe: { pork: 120, rice: 100, basil: 15, chili: 10, box: 1 },
+    id: 'mixed', name: 'ชุดหม่าล่าทอดรวม 10 ไม้', short: 'หม่าล่ารวม', price: 60, cost: 31.63,
+    recipe: { pork: 60, meatball: 3, sausage: 2, enoki: 30, fishTofu: 2, mala: 8, oil: 40, box: 1 },
   },
   {
-    id: 'friedrice', name: 'ข้าวผัดหมู', short: 'ข้าวผัดหมู', price: 55, cost: 31.24,
-    recipe: { pork: 100, rice: 120, egg: 1, chili: 5, box: 1 },
+    id: 'porkbelly', name: 'ชุดหมูสามชั้นทอด', short: 'หมูสามชั้น', price: 55, cost: 31.24,
+    recipe: { pork: 120, mala: 8, oil: 40, box: 1 },
   },
   {
-    id: 'omelette', name: 'ข้าวไข่เจียวหมูสับ', short: 'ไข่เจียวหมูสับ', price: 55, cost: 26.8,
-    recipe: { pork: 60, rice: 100, egg: 2, box: 1 },
+    id: 'balls', name: 'ชุดลูกชิ้น + ไส้กรอก', short: 'ลูกชิ้น + ไส้กรอก', price: 55, cost: 26.8,
+    recipe: { meatball: 5, sausage: 4, mala: 6, oil: 30, box: 1 },
   },
   {
-    id: 'soup', name: 'ต้มจืดเต้าหู้หมูสับ', short: 'ต้มจืดเต้าหู้', price: 45, cost: 24.72,
-    recipe: { pork: 80, tofu: 1, box: 1 },
+    id: 'veggie', name: 'ชุดผักทอดหม่าล่า', short: 'ผักทอด', price: 45, cost: 24.72,
+    recipe: { enoki: 80, fishTofu: 3, mala: 6, oil: 30, box: 1 },
   },
 ]
 
 /** Sales already recorded (sample). */
 export const INITIAL_SALES = [
-  { id: 's1', date: '2026-11-14', time: '11:40', items: 'กะเพราหมูสับ × 6, ข้าวผัดหมู × 4', app: 'Grab', sales: 580, profit: 69 },
-  { id: 's2', date: '2026-11-14', time: '12:15', items: 'ไข่เจียวหมูสับ × 3', app: 'ShopeeFood', sales: 165, profit: 32 },
-  { id: 's3', date: '2026-11-14', time: '17:30', items: 'กะเพราหมูสับ × 3', app: 'LINE MAN', sales: 180, profit: 18 },
+  { id: 's1', date: '2026-11-14', time: '11:40', items: 'หม่าล่ารวม × 6, หมูสามชั้น × 4', app: 'Grab', sales: 580, profit: 69 },
+  { id: 's2', date: '2026-11-14', time: '12:15', items: 'ลูกชิ้น + ไส้กรอก × 3', app: 'ShopeeFood', sales: 165, profit: 32 },
+  { id: 's3', date: '2026-11-14', time: '17:30', items: 'หม่าล่ารวม × 3', app: 'LINE MAN', sales: 180, profit: 18 },
 ]
 
 export const DEFAULT_SALE_DATE = '2026-11-14'

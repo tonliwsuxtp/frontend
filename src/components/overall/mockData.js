@@ -16,8 +16,8 @@ export const EXPENSE_CATEGORIES = ['วัตถุดิบ', 'ค่า GP', '
 export const DATA_END = new Date(2026, 10, 14)
 
 const GP_RATE = 0.321 // GP 30% + VAT 7%
-const MENU = ['ข้าวกะเพราหมูสับ', 'ข้าวผัดหมู', 'ข้าวไข่เจียวหมูสับ', 'ผัดซีอิ๊วหมู']
-const INGREDIENTS = ['ซื้อหมูสับ 2 กก.', 'ซื้อผักและเครื่องปรุง', 'ซื้อไข่ไก่ 2 แผง', 'ซื้อข้าวสาร 5 กก.']
+const MENU = ['ชุดหม่าล่าทอดรวม', 'ชุดหมูสามชั้นทอด', 'ชุดลูกชิ้น + ไส้กรอก', 'ชุดผักทอดหม่าล่า']
+const INGREDIENTS = ['ซื้อหมูสามชั้น 2 กก.', 'ซื้อลูกชิ้นและไส้กรอก', 'ซื้อเห็ดเข็มทองและเต้าหู้ปลา', 'ซื้อน้ำมันทอด 5 ลิตร', 'ซื้อผงหม่าล่า']
 
 export const toKey = (d) =>
   `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`
@@ -44,11 +44,11 @@ const tx = (date, n, title, channel, category, amount, app) => ({
 // Hand-written day matching the design mock-up (income 1,140 · expense 688).
 function fixedNov14(date) {
   return [
-    tx(date, 0, 'ซื้อกล่องและถุง', 'delivery', 'บรรจุภัณฑ์', -60),
+    tx(date, 0, 'ซื้อกล่องและไม้เสียบ', 'delivery', 'บรรจุภัณฑ์', -60),
     tx(date, 1, 'ค่าคอมมิชชั่น', 'tiktok', 'ค่าคอมมิชชั่น', 180),
     tx(date, 2, 'ค่า GP 30% + VAT · 16 ออร์เดอร์', 'delivery', 'ค่า GP', -308, 'Grab'),
-    tx(date, 3, 'ขายข้าวกะเพราหมูสับ × 16', 'delivery', 'ยอดขาย', 960, 'Grab'),
-    tx(date, 4, 'ซื้อหมูสับ 2 กก.', 'delivery', 'วัตถุดิบ', -320),
+    tx(date, 3, 'ขายชุดหม่าล่าทอดรวม × 16', 'delivery', 'ยอดขาย', 960, 'Grab'),
+    tx(date, 4, 'ซื้อหมูสามชั้น 2 กก.', 'delivery', 'วัตถุดิบ', -320),
   ]
 }
 
@@ -77,7 +77,7 @@ function generateDay(date) {
     add(`ขาย${pick(MENU, `m${app}`)} × ${count}`, 'delivery', 'ยอดขาย', amount, app)
     if (r(`p${app}`) < 0.12) add(`ส่วนลดแคมเปญ ${app}`, 'delivery', 'ค่าโปรโมท/แคมเปญ', -(30 + Math.round(r(`pa${app}`) * 8) * 10), app)
   })
-  if (orders && r('pk') < 0.5) add('ซื้อกล่องและถุง', 'delivery', 'บรรจุภัณฑ์', -orders * 4)
+  if (orders && r('pk') < 0.5) add('ซื้อกล่องและไม้เสียบ', 'delivery', 'บรรจุภัณฑ์', -orders * 4)
   if (sales) add(pick(INGREDIENTS, 'ing'), 'delivery', 'วัตถุดิบ', -Math.round((sales * (0.38 + r('ingr') * 0.12)) / 10) * 10)
 
   return list

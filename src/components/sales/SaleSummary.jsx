@@ -9,7 +9,7 @@ export default function SaleSummary({ app, orders, calc, onEditDeductions }) {
       <h2 className="sl-card-title sl-card-title-lg">ระบบจะบันทึกให้</h2>
       <dl className="sl-summary">
         <div>
-          <dt>รายรับ · ยอดขาย {plates} จาน</dt>
+          <dt>รายรับ · ยอดขาย {plates} ชุด</dt>
           <dd className="sl-pos">{money(sales, { sign: '+', whole: true })}</dd>
         </div>
         <div>
