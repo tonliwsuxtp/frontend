@@ -1,0 +1,151 @@
+/* Shared app tokens + shell (sidebar layout) used by every page. */
+:root {
+  --app-bg: #f3f3f4;
+  --app-card: #ffffff;
+  --app-text: #18181b;
+  --app-muted: #6b6b73;
+  --app-border: #ececee;
+  --app-primary: #2f5bd6;
+  --app-primary-soft: #e8eefc;
+  --app-income: #2f5bd6;
+  --app-expense: #e6a96b;
+  --app-pos: #2e7d3a;
+  --app-neg: #b53a2c;
+  --app-warn: #a26300;
+  --app-radius: 18px;
+}
+
+.app-shell {
+  display: grid;
+  grid-template-columns: 244px minmax(0, 1fr);
+  min-height: 100svh;
+  background: var(--app-bg);
+  color: var(--app-text);
+  font-family: 'Noto Sans Thai', system-ui, sans-serif;
+  font-size: 14px;
+}
+.app-shell button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  border: 0;
+  background: none;
+}
+.app-shell p {
+  margin: 0;
+}
+.app-content {
+  min-width: 0;
+}
+
+/* Phones: no sidebar (pages show the bottom nav instead). */
+@media (max-width: 899px) {
+  .app-shell {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .app-sidebar {
+    display: none !important;
+  }
+}
+
+/* ---------- Sidebar ---------- */
+.app-sidebar {
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100svh;
+  padding: 28px 16px 24px;
+  overflow-y: auto;
+  background: var(--app-card);
+  border-right: 1px solid var(--app-border);
+}
+.app-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 8px 28px;
+}
+.app-brand-logo {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: var(--app-text);
+  color: #fff;
+}
+.app-brand strong {
+  display: block;
+  font-size: 16px;
+}
+.app-brand small {
+  font-size: 11px;
+  color: var(--app-muted);
+}
+.app-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.app-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  padding: 11px 14px;
+  border-radius: 10px;
+  text-align: left;
+  font-size: 15px;
+  color: #333 !important;
+  transition: background 0.15s;
+}
+.app-nav-item:hover {
+  background: #f4f4f6 !important;
+}
+.app-nav-item.is-active {
+  background: var(--app-primary-soft) !important;
+  color: var(--app-primary) !important;
+  font-weight: 700;
+}
+.app-side-section {
+  margin-top: 28px;
+  padding: 0 12px;
+}
+.app-side-heading {
+  margin-bottom: 10px !important;
+  font-size: 11px;
+  color: var(--app-muted);
+}
+.app-side-channels {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.app-side-channels li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.app-dot {
+  flex: none;
+  width: 9px;
+  height: 9px;
+  border-radius: 2px;
+}
+.app-settings {
+  margin-top: auto;
+}
+@media (max-width: 1100px) {
+  .app-shell {
+    grid-template-columns: 210px minmax(0, 1fr);
+  }
+}
+@media (max-width: 899px) {
+  .app-shell {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

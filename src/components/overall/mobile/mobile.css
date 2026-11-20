@@ -1,0 +1,361 @@
+.ov-page {
+  --ov-bg: #f2f2f2;
+  --ov-card: #ffffff;
+  --ov-text: #111111;
+  --ov-muted: #6b6b6b;
+  --ov-border: #e6e6e6;
+  --ov-primary: #2f5bd6;
+  --ov-income: #2f5bd6;
+  --ov-expense: #e6a96b;
+  --ov-positive: #2e7d3a;
+  --ov-negative: #d0453a;
+  --ov-dark: #18181b;
+  --ov-dark-2: #26272b;
+  --ov-mono: 'JetBrains Mono', ui-monospace, 'Noto Sans Thai', monospace;
+  --ov-radius: 18px;
+  --ov-nav-h: 68px;
+
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  min-height: 100svh;
+  margin: 0 auto;
+  background: var(--ov-bg);
+  color: var(--ov-text);
+  font-family: 'Noto Sans Thai', system-ui, sans-serif;
+}
+
+.ov-page button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  border: 0;
+  background: none;
+}
+
+.ov-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px 16px calc(var(--ov-nav-h) + 24px);
+}
+
+/* ---------- Tabs ---------- */
+.ov-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 6px;
+  background: #e4e5e8;
+  border-radius: 16px;
+}
+.ov-tab {
+  padding: 14px 0;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 16px;
+  transition: background 0.15s;
+}
+.ov-tab.is-active {
+  background: var(--ov-card);
+  box-shadow: 0 1px 3px rgb(0 0 0 / 0.06);
+}
+
+/* ---------- Date nav ---------- */
+.ov-datenav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.ov-datenav-label {
+  margin: 0;
+  font-family: var(--ov-mono);
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: 0;
+  color: var(--ov-text);
+}
+.ov-icon-btn {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+}
+.ov-icon-btn:hover {
+  background: rgb(0 0 0 / 0.06);
+}
+
+/* ---------- Profit card ---------- */
+.ov-profit {
+  padding: 22px 24px 20px;
+  border-radius: var(--ov-radius);
+  background: var(--ov-dark);
+  color: #fff;
+}
+.ov-profit p {
+  margin: 0;
+}
+.ov-profit-title {
+  font-size: 17px;
+  color: #e5e5e5;
+}
+.ov-profit-value {
+  margin: 8px 0 10px !important;
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 1.1;
+  color: #e6e6e6;
+}
+.ov-profit-value.is-loss {
+  color: #f19a91;
+}
+.ov-profit-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.ov-profit-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: var(--ov-dark-2);
+  font-size: 17px;
+}
+.ov-profit-stat strong {
+  font-family: var(--ov-mono);
+  font-weight: 500;
+}
+.ov-text-income {
+  color: #8fd88a;
+}
+.ov-text-expense {
+  color: #f19a91;
+}
+
+/* ---------- Generic card ---------- */
+.ov-card {
+  padding: 20px 26px;
+  border-radius: var(--ov-radius);
+  background: var(--ov-card);
+}
+.ov-card-title {
+  margin: 0;
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: 0;
+  color: var(--ov-text);
+}
+
+/* ---------- Chart ---------- */
+.ov-chart-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.ov-legend {
+  display: flex;
+  gap: 16px;
+  font-size: 10px;
+}
+.ov-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.ov-swatch {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+}
+.ov-bg-income {
+  background: var(--ov-income);
+}
+.ov-bg-expense {
+  background: var(--ov-expense);
+}
+.ov-chart {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+}
+.ov-chart-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.ov-chart-bars {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 2px;
+  width: 100%;
+  height: 100px;
+  border-bottom: 1px solid var(--ov-border);
+}
+.ov-bar {
+  flex: 1;
+  max-width: 20px;
+  min-height: 2px;
+  border-radius: 2px 2px 0 0;
+  transition: height 0.3s ease;
+}
+.ov-chart-label {
+  font-family: var(--ov-mono);
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+/* ---------- Channels ---------- */
+.ov-channels {
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
+}
+.ov-channel {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+}
+.ov-channel + .ov-channel {
+  border-top: 1px solid var(--ov-border);
+}
+.ov-channel-dot {
+  flex: none;
+  width: 9px;
+  height: 9px;
+  border-radius: 2px;
+}
+.ov-channel-info {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+}
+.ov-channel-info strong {
+  font-family: var(--ov-mono);
+  font-size: 13px;
+  font-weight: 600;
+}
+.ov-channel-info small {
+  font-family: var(--ov-mono);
+  font-size: 9px;
+  color: var(--ov-muted);
+}
+.ov-channel-net {
+  font-family: var(--ov-mono);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--ov-positive);
+}
+.ov-channel-net.is-loss {
+  color: var(--ov-negative);
+}
+
+/* ---------- Quick actions ---------- */
+.ov-actions {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+.ov-action {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 18px 4px;
+  border-radius: var(--ov-radius);
+  background: var(--ov-card) !important;
+  color: var(--ov-primary) !important;
+  transition: transform 0.1s;
+}
+.ov-action span {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ov-text);
+}
+.ov-action:active {
+  transform: scale(0.97);
+}
+
+/* ---------- Tax ---------- */
+.ov-tax {
+  padding: 14px 24px;
+  border: 1px solid #c7d3f3;
+  border-radius: var(--ov-radius);
+  background: #eef2fd;
+  color: var(--ov-primary);
+}
+.ov-tax p {
+  margin: 0;
+}
+.ov-tax-title {
+  font-family: var(--ov-mono);
+  font-size: 12px;
+}
+.ov-tax-value {
+  font-size: 26px;
+  font-weight: 800;
+}
+
+/* ---------- FAB ---------- */
+.ov-fab {
+  position: fixed;
+  right: max(16px, calc(50% - 240px + 16px));
+  bottom: calc(var(--ov-nav-h) + 56px);
+  z-index: 11;
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: var(--ov-primary) !important;
+  color: #fff !important;
+  box-shadow: 0 6px 16px rgb(47 91 214 / 0.35);
+}
+
+/* ---------- Bottom nav ---------- */
+.ov-bottomnav {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  z-index: 10;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  width: 100%;
+  max-width: 480px;
+  height: var(--ov-nav-h);
+  transform: translateX(-50%);
+  background: var(--ov-card);
+  border-top: 1px solid var(--ov-border);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+.ov-bottomnav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  color: #444 !important;
+  font-size: 10px;
+  font-weight: 700;
+}
+.ov-bottomnav-item.is-active {
+  color: var(--ov-primary) !important;
+}
+.ov-icon-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* Tokens for the bottom nav when it is used outside .ov-page (e.g. the sales page). */
+.ov-bottomnav {
+  --ov-card: #ffffff;
+  --ov-border: #e6e6e6;
+  --ov-primary: #2f5bd6;
+  --ov-nav-h: 68px;
+}
