@@ -5,6 +5,7 @@ import Transactions from './components/transactions'
 import Ingredients from './components/ingredients'
 import Stock from './components/stock'
 import MenuCost from './components/menu-cost'
+import Breakeven from './components/breakeven'
 
 const PAGES = {
   overall: Overall,
@@ -13,6 +14,7 @@ const PAGES = {
   ingredients: Ingredients,
   stock: Stock,
   'menu-cost': MenuCost,
+  breakeven: Breakeven,
 }
 
 // Phone bottom-nav ids that point at a differently named page.
